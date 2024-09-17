@@ -1,7 +1,7 @@
 @use './variables' as *;
 
-@mixin box-shadow($color: $chambray) {
-  box-shadow: 0 4px 6px 0 $color;
+@mixin box-shadow($color: $chambray, $x: 0, $y: 4px, $blur: 6px, $spread: 0) {
+  box-shadow: $x $y $blur $spread $color;
 }
 
 @mixin card-style {

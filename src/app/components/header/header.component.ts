@@ -1,11 +1,12 @@
 import { AfterViewInit, Component } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
+import { HeaderSettingsComponent } from "../header-settings/header-settings.component";
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [HeaderSettingsComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -32,5 +33,6 @@ export class HeaderComponent implements AfterViewInit{
       }
     })
   }
+
 
 }

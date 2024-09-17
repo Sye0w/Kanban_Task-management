@@ -1,0 +1,15 @@
+<section>
+  <div class="dot-grp" (click)="togglePopup()">
+    <div class="edit-dot-1"></div>
+    <div class="edit-dot-2"></div>
+    <div class="edit-dot-3"></div>
+  </div>
+
+  @if(popup){
+    <ul class="settings-div" [ngClass]="{'fade-in': popup, 'fade-out': !popup}">
+     <li class="li-1">Edit Board</li>
+     <li class="li-2">Delete board</li>
+    </ul>
+  }
+</section>
+

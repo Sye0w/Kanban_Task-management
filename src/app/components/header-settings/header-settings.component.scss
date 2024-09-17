@@ -1,0 +1,55 @@
+@use '../../../partials/variables' as * ;
+@use '../../../partials/_mixins.scss' as * ;
+
+.dot-grp {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  cursor: pointer;
+
+  * {
+    width: .375rem;
+    height: .375rem;
+    border-radius: 50%;
+    background-color: $regent-gray;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .edit-dot-1,
+    .edit-dot-2,
+    .edit-dot-3 {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.settings-div{
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  background-color: $white;
+  @include box-shadow($color:#364e7e40,$y:10,$blur:20px );
+  border-radius: .5rem;
+  padding: 1rem;
+  width: 12rem;
+  height: 5.875rem;
+  position: absolute;
+  top: 6rem;
+  right: 1.75rem;
+  z-index: 1;
+  list-style: none;
+  font-weight:500;
+
+  .li-1,.li-2{
+    cursor: pointer;
+  }
+
+  .li-1{
+    color: $regent-gray;
+  }
+  .li-2{
+    color: $mendy;
+  }
+}
+

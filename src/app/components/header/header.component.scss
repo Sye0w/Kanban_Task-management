@@ -78,28 +78,7 @@ header{
       }
     }
 
-    .dot-grp {
-      display: flex;
-      flex-direction: column;
-      gap: .25rem;
-      cursor: pointer;
-
-      * {
-        width: .375rem;
-        height: .375rem;
-        border-radius: 50%;
-        background-color: $regent-gray;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      }
-
-      &:hover {
-        .edit-dot-1,
-        .edit-dot-2,
-        .edit-dot-3 {
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
+    
   }
 }
 
