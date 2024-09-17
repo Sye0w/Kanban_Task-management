@@ -1,0 +1,79 @@
+@use '../../../partials/variables' as * ;
+
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  background: $white;
+  padding-right: 2rem;
+
+  .header-grp-1{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    h3{
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .logo{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .9844rem;
+    border-right: 1px solid $linkwater;
+    padding-right: 1.125rem;
+
+    .logo-svg{
+      width: auto;
+      display: flex;
+      gap: .125rem;
+      margin-left: 1.5rem;
+
+      *{
+        width: .375rem;
+        height: 1.5625rem;
+        border-radius: .125rem;
+      }
+
+      .logo-svg-1{
+        background-color: $cornflowerblue;
+      }
+      .logo-svg-2{
+        background-color: $main-purple;
+        opacity: .75;
+      }
+      .logo-svg-3{
+        background-color: $main-purple;
+        opacity: .5;
+      }
+    }
+  }
+
+
+
+  .header-action{
+    justify-self: flex-end;
+    button{
+      border-style: none;
+      padding-inline: 1.5313rem;
+      padding-block: .9063rem;
+      background: $main-purple;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: $white;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+
+      &:hover{
+        background-color: $melrose;
+      }
+    }
+  }
+}

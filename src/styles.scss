@@ -4,3 +4,15 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+*{
+  // width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $selago;
+  font-family: $font,system-ui;
+}
