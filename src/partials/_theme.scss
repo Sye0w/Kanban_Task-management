@@ -1,0 +1,17 @@
+@use "./variables" as *;
+
+$light-theme: (
+  "background-color": $selago,
+  "color": $blackrussian,
+
+  // header: white
+  //
+);
+
+$dark-theme: (
+  "background-color": $charadedp,
+  "color": $white,
+
+  // header: charade
+
+);

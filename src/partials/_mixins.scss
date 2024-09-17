@@ -1,0 +1,13 @@
+@use './variables' as *;
+
+@mixin box-shadow($color: $chambray) {
+  box-shadow: 0 4px 6px 0 $color;
+}
+
+@mixin card-style {
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include box-shadow;
+}
