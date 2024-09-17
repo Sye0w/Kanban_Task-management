@@ -42,15 +42,13 @@ header{
       }
 
       .logo-svg-1{
-        background-color: $cornflowerblue;
+        background-color: $main-purple;
       }
       .logo-svg-2{
-        background-color: $main-purple;
-        opacity: .75;
+        background-color:#8a86d4;
       }
       .logo-svg-3{
-        background-color: $main-purple;
-        opacity: .5;
+        background-color: #b1aee2;
       }
     }
   }
@@ -59,6 +57,10 @@ header{
 
   .header-action{
     justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
     button{
       border-style: none;
       padding-inline: 1.5313rem;
@@ -75,5 +77,31 @@ header{
         background-color: $melrose;
       }
     }
+
+    .dot-grp {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+      cursor: pointer;
+
+      * {
+        width: .375rem;
+        height: .375rem;
+        border-radius: 50%;
+        background-color: $regent-gray;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      &:hover {
+        .edit-dot-1,
+        .edit-dot-2,
+        .edit-dot-3 {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
   }
 }
+
+
+
