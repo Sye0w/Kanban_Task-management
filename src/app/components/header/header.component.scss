@@ -61,24 +61,9 @@ header{
     align-items: center;
     gap: 1.5rem;
 
-    button{
-      border-style: none;
-      padding-inline: 1.5313rem;
-      padding-block: .9063rem;
-      background: $main-purple;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: $white;
-      border-radius: 1.5rem;
-      cursor: pointer;
-      transition: all 0.4s ease-in-out;
-
-      &:hover{
-        background-color: $melrose;
-      }
-    }
-
     
+
+
   }
 }
 

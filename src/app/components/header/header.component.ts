@@ -1,12 +1,13 @@
 import { AfterViewInit, Component } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 import { HeaderSettingsComponent } from "../header-settings/header-settings.component";
+import { AddTaskComponent } from "../add-task/add-task.component";
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [HeaderSettingsComponent],
+  imports: [HeaderSettingsComponent, AddTaskComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

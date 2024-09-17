@@ -1,0 +1,18 @@
+<button id="add-btn" mat-raised-button color="primary" (click)="toggleForm()">
+  + Add New task
+</button>
+
+@if(visible){
+  <div class="modal" >
+    <div class="modal-content">
+      <h2>Add New Task</h2>
+      <section>
+
+      </section>
+      <button mat-button (click)="toggleForm()">
+        Create Task
+      </button>
+    </div>
+  </div>
+
+}

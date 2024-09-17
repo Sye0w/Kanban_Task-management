@@ -11,3 +11,31 @@
   align-items: center;
   @include box-shadow;
 }
+
+
+@mixin button-style(
+  $width: auto,
+  $height: auto,
+  $padding-inline: 1.5313rem,
+  $padding-block: 0.9063rem,
+  $border-radius: 1.5rem,
+  $background-color: $main-purple,
+  $hover-background-color: $melrose,
+  $font-color: $white
+) {
+  width: $width;
+  height: $height;
+  padding-inline: $padding-inline;
+  padding-block: $padding-block;
+  background: $background-color;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $font-color;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background-color: $hover-background-color;
+  }
+}
