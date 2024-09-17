@@ -30,6 +30,18 @@ export class HeaderComponent implements AfterViewInit{
           delay: anime.stagger(150, {direction: 'reverse'}),
           loop: true
         })
+
+        anime({
+          targets: '.logo-svg .rect:last-child',
+          rotate: [
+            { value: 0, duration: 0 },
+            { value: 50, duration: 1500, easing: 'easeInOutQuad' },
+            { value: 50, duration: 3000 },
+            { value: 0, duration: 1500, easing: 'easeInOutQuad' },
+            { value: 0, duration: 6000 }
+          ],
+          loop: true
+        });
       }
     })
   }
