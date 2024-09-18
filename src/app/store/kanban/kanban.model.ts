@@ -1,3 +1,5 @@
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 interface Task {
   title: string;
   description: string;
@@ -15,11 +17,23 @@ interface Column {
   tasks: Task[];
 }
 
-interface Board {
+export interface IBoard {
   name: string;
   columns: Column[];
 }
 
-export interface BoardsData {
-  boards: Board[];
+export interface IBoardsData {
+  boards: IBoard[];
 }
+
+export interface kanbanState extends EntityState<IBoard>{
+  loading: boolean;
+  error: string | null;
+}
+
+export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>()
+
+export const initialState: kanbanState = adapter.getInitialState({
+  loading: false,
+  error: null
+})
