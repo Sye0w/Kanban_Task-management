@@ -8,7 +8,7 @@
 
 .modal {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
@@ -20,35 +20,156 @@
   align-items: center;
 
 
+
   .modal-content {
     h2{
       font-size: 1.125rem;
       font-weight: 700;
     }
     background-color: #fff;
-    padding: 20px;
+    padding: 1.25rem;
+    padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     border: 1px solid #888;
     width: 29.25rem;
-    height: 43.4375rem;
+
     border-radius: .375rem;
+
+    .form-header{
+      display: flex;
+      justify-content: space-between;
+
+      img{
+        @include close-icon-style
+      }
+    }
 
     section{
       display: flex;
       flex-direction: column;
-      border: 2px solid #888;
+      gap: 1.5rem;
       height: 500px;
+
+      label{
+        font-size: .75rem;
+        font-weight: 700;
+        color: $regent-gray;
+      }
+      .form-grp-1{
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        font-family: $font;
+
+        input{
+          height: 2.5rem;
+          padding-left: 1rem;
+          padding-block: .5rem;
+          border-radius: .25rem;
+          border: 1px solid #828FA340;
+          color: $blackrussian;
+          font-size: 500;
+
+          &:focus{
+            outline: none;
+          }
+
+          &::placeholder{
+            color: #828FA340;
+          }
+        }
+
+        textarea{
+          padding-left: 1rem;
+          padding-block: .5rem;
+          border: 1px solid #828FA340;
+          border-radius: .25rem;
+          color: $blackrussian;
+          &:focus{
+            outline: none;
+          }
+
+          &::placeholder{
+            color: #828FA340;
+          }
+        }
+
+      }
+
+      .subtasks{
+        display: flex;
+        flex-direction: column;
+
+        button{
+          @include button-style($background-color: #635FC720 );
+          border-style: none;
+          color: $main-purple;
+        }
+
+        #item-grp{
+          overflow-y: scroll;
+          max-height: 7rem;
+          padding-right: .5rem;
+          display: flex;
+          flex-direction: column;
+          gap: .75rem;
+
+          &::-webkit-scrollbar {
+            width: 12px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: #828FA340;
+            border-radius: 10px;
+            background-clip: content-box;
+          }
+
+        }
+
+        .subtask-item{
+          display: flex;
+          gap: .5rem;
+          align-items: center;
+
+          input{
+            width: 24.0625rem;
+          }
+
+          img{
+            @include close-icon-style
+          }
+        }
+      }
+
+      .select{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 1rem;
+        padding-block: .5rem;
+        border-radius: .25rem;
+        border: 1px solid #828FA340;
+        color: $blackrussian;
+        font-size: 500;
+        cursor: pointer;
+
+        img{
+          width: .5875rem;
+          height: .4938rem;
+          margin-right:.5rem;
+        }
+      }
     }
 
     button{
-      // display: flex;
       @include button-style($height: 2.5rem)
-
     }
   }
-
 }
+
+
+
 
 

@@ -1,18 +1,53 @@
+<!-- add-task.component.html -->
 <button id="add-btn" mat-raised-button color="primary" (click)="toggleForm()">
   + Add New task
 </button>
 
-@if(visible){
+@if (visible) {
   <div class="modal" >
     <div class="modal-content">
-      <h2>Add New Task</h2>
+      <div class="form-header">
+        <h2>Add New Task</h2>
+        <img title="close" src="../../../assets/assets/icon-cross.svg" (click)="toggleForm()" alt="">
+      </div>
       <section>
+        <div class="form-grp-1">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="e.g. Take coffee break" [(ngModel)]="title">
+        </div>
 
+        <div class="form-grp-1 desc">
+          <label for="desc">Description</label>
+          <textarea name="desc" id="desc" rows="5" [(ngModel)]="description"></textarea>
+        </div>
+
+        <div class="form-grp-1 subtasks">
+          <label for="subtasks">Subtasks</label>
+          <div id="item-grp">
+          @for (subtask of subtasks; track subtask; let i = $index) {
+              <div class="subtask-item">
+                <input type="text" [name]="'subtask-' + i" [id]="'subtask-' + i" placeholder="e.g. Make coffee" [(ngModel)]="subtask.title">
+                <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeSubtask(i)">
+              </div>
+
+            }
+          </div>
+          <button type="button" (click)="addSubtask()">
+            + Add New Subtask
+          </button>
+        </div>
+
+        <div class="form-grp-1 status">
+          <label for="status">Status</label>
+          <div class="select">
+            Todo
+            <img src="../../../assets/assets/icon-chevron-down.svg" alt="">
+          </div>
+        </div>
       </section>
-      <button mat-button (click)="toggleForm()">
+      <button mat-button (click)="addTask()">
         Create Task
       </button>
     </div>
   </div>
-
 }

@@ -39,3 +39,14 @@
     background-color: $hover-background-color;
   }
 }
+
+
+@mixin close-icon-style(
+  $width: .7281rem,
+  $height: .76281rem,
+  $cursor: pointer
+) {
+  width: $width;
+  height: $height;
+  cursor: $cursor;
+}
