@@ -1,39 +1,33 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-interface Task {
+export interface Task {
+  id: string; // Add this
   title: string;
   description: string;
   status: 'Todo' | 'Doing' | 'Done';
   subtasks: Subtask[];
 }
 
-interface Subtask {
+export interface Subtask {
+  id: string; // Add this
   title: string;
   isCompleted: boolean;
 }
 
-interface Column {
+export interface Column {
+  id: string; // Add this
   name: string;
-  tasks: Task[];
+  taskIds: string[]; // Change this to store task IDs instead of tasks
 }
 
 export interface IBoard {
+  id: string; // Add this
   name: string;
-  columns: Column[];
+  columnIds: string[]; // Change this to store column IDs instead of columns
 }
 
-export interface IBoardsData {
-  boards: IBoard[];
-}
-
-export interface kanbanState extends EntityState<IBoard>{
+export interface KanbanState extends EntityState<IBoard> {
+  selectedBoardId: string | null;
   loading: boolean;
   error: string | null;
 }
-
-export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>()
-
-export const initialState: kanbanState = adapter.getInitialState({
-  loading: false,
-  error: null
-})
