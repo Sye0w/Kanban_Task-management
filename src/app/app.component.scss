@@ -1,0 +1,35 @@
+@use '../partials/variables' as * ;
+@use '../partials/mixins' as * ;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-grp {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidenav-toggle {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3rem;
+  bottom: 3.5rem;
+  left: 0;
+  background: $main-purple;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  z-index: 2;
+  cursor: pointer;
+
+  img {
+    width: 1.25rem;
+    height: .875rem;
+  }
+}

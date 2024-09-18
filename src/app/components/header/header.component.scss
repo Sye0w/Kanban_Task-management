@@ -18,39 +18,7 @@ header{
       font-size: 1.5rem;
       font-weight: 700;
     }
-    .logo{
-      width: auto;
-      display: flex;
-      height: 6rem;
-      align-items: center;
-      justify-content: center;
-      gap: .9844rem;
-      border-right: 1px solid $linkwater;
-      padding-right: 1.125rem;
-
-      .logo-svg{
-        width: auto;
-        display: flex;
-        gap: .125rem;
-        margin-left: 1.5rem;
-
-        *{
-          width: .375rem;
-          height: 1.5625rem;
-          border-radius: .125rem;
-        }
-
-        .logo-svg-1{
-          background-color: $main-purple;
-        }
-        .logo-svg-2{
-          background-color:#8a86d4;
-        }
-        .logo-svg-3{
-          background-color: #b1aee2;
-        }
-      }
-    }
+    
   }
 
 

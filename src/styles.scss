@@ -15,4 +15,6 @@ body {
   min-height: 100vh;
   background-color: $selago;
   font-family: $font,system-ui;
+  display: flex;
+  flex-direction: column;
 }

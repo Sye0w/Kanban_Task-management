@@ -1,0 +1,95 @@
+@use '../../../partials/variables' as * ;
+@use '../../../partials/mixins.scss' as * ;
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+mat-drawer-container {
+  flex: 1;
+  width: 100%;
+}
+
+aside {
+  background-color: $white;
+  height: 100%;
+  width: 18.675rem;
+  border-style: none;
+  display: flex;
+  flex-direction: column;
+  color: $regent-gray;
+  padding-top: .875rem;
+
+  .sidebar-content{
+    padding-left: 4.5rem;
+    h4{
+      font-size: .75rem;
+    }
+  }
+
+  .sidebar-settings{
+    position: absolute;
+    bottom: 2.125rem;
+    padding-left: 1.5rem;
+    align-self: flex-start;
+
+    div{
+
+      .theme{
+        background-color: $selago;
+        width: 15.6875rem;
+        height: 3rem;
+        border-radius: .375rem;
+        display: flex;
+        gap: 1.375rem;
+
+        display: flex;
+        justify-content: center;
+        padding-block: .9375rem;
+
+        .toggle{
+          width: 2.5rem;
+          height: 1.25rem;
+          background-color: $main-purple;
+          border-radius: .75rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          padding-left: .25rem;
+
+          div{
+            width: .875rem;
+            height: .875rem;
+            background-color: $white;
+            border-radius: 50%;
+            transition: background-color 0.3s ease-in-out;
+          }
+        }
+      }
+
+      .hide-toggle{
+        margin-top: .75rem;
+        margin-left: 1rem;
+        display: flex;
+        gap: 0.9375rem;
+        cursor: pointer;
+        p{
+          font-size: .9375rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+}
+
+mat-drawer {
+  border-right: 1px solid $linkwater;
+}
+
+mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

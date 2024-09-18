@@ -1,1 +1,28 @@
-<p>sidebar works!</p>
+<mat-drawer-container>
+  <mat-drawer [opened]="opened" mode="side">
+    <aside>
+      <section class="sidebar-content">
+        <h4>ALL BOARDS (3)</h4>
+      </section>
+
+      <section class="sidebar-settings">
+        <div>
+          <div class="theme">
+            <img src="../../../assets/assets/icon-light-theme.svg" alt="light-icon">
+            <div class="toggle ">
+              <div></div>
+            </div>
+            <img src="../../../assets/assets/icon-dark-theme.svg" alt="light-icon">
+          </div>
+          <div class="hide-toggle" title="hide sidebar" (click)="toggleSidenav()">
+            <img src="../../../assets/assets/icon-hide-sidebar.svg" alt="hide-icon">
+            <p>Hide Sidebar</p>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

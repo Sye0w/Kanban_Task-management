@@ -1,7 +1,13 @@
 <body>
-  <app-header/>
+  <app-header></app-header>
   <div class="main-grp">
-    <app-sidebar/>
-    <router-outlet/>
+    <app-sidebar [opened]="sidebarOpened">
+      <router-outlet></router-outlet>
+    </app-sidebar>
   </div>
+  @if(!sidebarOpened){
+    <div class="sidenav-toggle" (click)="toggleSidebar()">
+      <img src="../assets/assets/icon-show-sidebar.svg" alt="Toggle Sidebar">
+    </div>
+  }
 </body>
