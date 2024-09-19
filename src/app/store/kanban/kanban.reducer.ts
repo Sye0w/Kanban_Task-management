@@ -1,11 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import * as KanbanActions from './kanban.actions';
-import { KanbanState, IBoard } from './kanban.model';
 
-export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>();
+import {  IBoard, State } from './kanban.model';
+import { loadBoards, loadBoardsSuccess, loadBoardsFailure, addBoard, editBoard, deleteBoard, selectBoard } from './kanban.actions';
 
-export const initialState: KanbanState = adapter.getInitialState({
+export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>({
+  selectId: board => board.name,
+  sortComparer: (a, b) => a.name.localeCompare(b.name)
+});
+
+export const initialState: State = adapter.getInitialState({
   selectedBoardId: null,
   loading: false,
   error: null
@@ -13,23 +17,23 @@ export const initialState: KanbanState = adapter.getInitialState({
 
 export const kanbanReducer = createReducer(
   initialState,
-  on(KanbanActions.loadBoards, state => ({ ...state, loading: true })),
-  on(KanbanActions.loadBoardsSuccess, (state, { boards }) =>
-    adapter.setAll(boards, { ...state, loading: false })
+  on(loadBoards, state => ({ ...state, loading: true })),
+  on(loadBoardsSuccess, (state, { board }) =>
+    adapter.setAll(board, state )
   ),
-  on(KanbanActions.loadBoardsFailure, (state, { error }) =>
+  on(loadBoardsFailure, (state, { error }) =>
     ({ ...state, loading: false, error })
   ),
-  on(KanbanActions.addBoard, (state, { board }) =>
+  on(addBoard, (state, { board }) =>
     adapter.addOne(board, state)
   ),
-  on(KanbanActions.editBoard, (state, { board }) =>
+  on(editBoard, (state, { board }) =>
     adapter.updateOne({ id: board.id, changes: board }, state)
   ),
-  on(KanbanActions.deleteBoard, (state, { id }) =>
+  on(deleteBoard, (state, { id }) =>
     adapter.removeOne(id, state)
   ),
-  on(KanbanActions.selectBoard, (state, { id }) =>
+  on(selectBoard, (state, { id }) =>
     ({ ...state, selectedBoardId: id })
   )
 );

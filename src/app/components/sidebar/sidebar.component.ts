@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LogoComponent } from "../logo/logo.component";
 import { ModalService } from '../../services/modal/modal.service';
+import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,8 +15,13 @@ import { ModalService } from '../../services/modal/modal.service';
 export class SidebarComponent {
   @Input() opened!: boolean;
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService,
+    private kanbanFacade : KanbanFacadeService
+  ) { }
 
+  ngOnInit(){
+    this.kanbanFacade.loadKanban()
+  }
 
   toggleSidenav() {
     this.modalService.toggleSidebar();

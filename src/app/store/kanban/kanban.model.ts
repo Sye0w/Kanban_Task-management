@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface Task {
-  id: string; 
+  id: string;
   title: string;
   description: string;
   status: 'Todo' | 'Doing' | 'Done';
@@ -17,17 +17,22 @@ export interface Subtask {
 export interface Column {
   id: string;
   name: string;
-  taskIds: string[];
+  tasks: Task[];
 }
 
 export interface IBoard {
   id: string;
   name: string;
-  columnIds: string[];
+  columns: Column[];
 }
 
-export interface KanbanState extends EntityState<IBoard> {
+export interface State extends EntityState<IBoard> {
   selectedBoardId: string | null;
   loading: boolean;
   error: string | null;
+}
+
+export interface IBoardsData {
+  boards: IBoard[];
+  type: string;
 }
