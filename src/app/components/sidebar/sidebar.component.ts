@@ -20,7 +20,7 @@ export class SidebarComponent {
   ) { }
 
   ngOnInit(){
-    this.kanbanFacade.loadKanban()
+    this.kanbanFacade.loadBoards()
   }
 
   toggleSidenav() {

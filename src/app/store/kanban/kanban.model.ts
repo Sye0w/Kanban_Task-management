@@ -1,38 +1,35 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+// src/app/store/kanban/kanban.model.ts
 
-export interface Task {
-  id: string;
-  title: string;
-  description: string;
-  status: 'Todo' | 'Doing' | 'Done';
-  subtasks: Subtask[];
-}
+import { EntityState } from '@ngrx/entity';
 
 export interface Subtask {
-  id: string;
   title: string;
   isCompleted: boolean;
 }
 
+export interface Task {
+  title: string;
+  description: string;
+  status: string;
+  subtasks: Subtask[];
+}
+
 export interface Column {
-  id: string;
   name: string;
   tasks: Task[];
 }
 
-export interface IBoard {
+export interface Board {
   id: string;
   name: string;
   columns: Column[];
 }
 
-export interface State extends EntityState<IBoard> {
-  selectedBoardId: string | null;
-  loading: boolean;
-  error: string | null;
+export interface IBoardsData {
+  boards: Board[];
 }
 
-export interface IBoardsData {
-  boards: IBoard[];
-  type: string;
+export interface State extends EntityState<Board> {
+  loading: boolean;
+  error: any;
 }

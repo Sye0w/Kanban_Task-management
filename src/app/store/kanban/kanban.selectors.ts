@@ -1,33 +1,34 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-// import { KanbanState } from './kanban.model';
 import * as fromKanban from './kanban.reducer';
-import { getSelectedBoardId } from '../router/router.selectors';
-import { State } from './kanban.model';
 
-export const selectKanbanState = createFeatureSelector<State>('kanban');
+export const selectKanbanState = createFeatureSelector<fromKanban.State>('kanban');
 
+export const selectAllBoards = createSelector(
+  selectKanbanState,
+  fromKanban.selectAll
+);
 
-export const {
-  selectIds: selectBoardIds,
-  selectEntities: selectBoardEntities,
-  selectAll: selectAllBoards,
-  selectTotal: selectTotalBoards,
-} = fromKanban.adapter.getSelectors(selectKanbanState);
+export const selectBoardEntities = createSelector(
+  selectKanbanState,
+  fromKanban.selectEntities
+);
 
-
-
-export const selectSelectedBoard = createSelector(
+export const selectBoardByName = (name: string) => createSelector(
   selectBoardEntities,
-  getSelectedBoardId,
-  (boardEntities, boardId) => boardId ? boardEntities[boardId] : null
+  (boards) => boards[name]
 );
 
 export const selectKanbanLoading = createSelector(
   selectKanbanState,
-  (state: State) => state.loading
+  (state) => state.loading
 );
 
 export const selectKanbanError = createSelector(
   selectKanbanState,
-  (state: State) => state.error
+  (state) => state.error
+);
+
+export const selectBoardsCount = createSelector(
+  selectKanbanState,
+  fromKanban.selectTotal
 );

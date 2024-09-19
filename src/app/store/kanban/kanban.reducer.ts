@@ -1,39 +1,36 @@
 import { createReducer, on } from '@ngrx/store';
-import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { Board } from './kanban.model';
+import * as KanbanActions from './kanban.actions';
 
-import {  IBoard, State } from './kanban.model';
-import { loadBoards, loadBoardsSuccess, loadBoardsFailure, addBoard, editBoard, deleteBoard, selectBoard } from './kanban.actions';
+export interface State extends EntityState<Board> {
+  loading: boolean;
+  error: any;
+}
 
-export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>({
-  selectId: board => board.name,
-  sortComparer: (a, b) => a.name.localeCompare(b.name)
+export const adapter: EntityAdapter<Board> = createEntityAdapter<Board>({
+  selectId: (board: Board) => board.name 
 });
 
 export const initialState: State = adapter.getInitialState({
-  selectedBoardId: null,
   loading: false,
   error: null
 });
 
 export const kanbanReducer = createReducer(
   initialState,
-  on(loadBoards, state => ({ ...state, loading: true })),
-  on(loadBoardsSuccess, (state, { board }) =>
-    adapter.setAll(board, state )
+  on(KanbanActions.loadBoards, state => ({ ...state, loading: true })),
+  on(KanbanActions.loadBoardsSuccess, (state, { boards }) =>
+    adapter.setAll(boards, { ...state, loading: false })
   ),
-  on(loadBoardsFailure, (state, { error }) =>
+  on(KanbanActions.loadBoardsFailure, (state, { error }) =>
     ({ ...state, loading: false, error })
-  ),
-  on(addBoard, (state, { board }) =>
-    adapter.addOne(board, state)
-  ),
-  on(editBoard, (state, { board }) =>
-    adapter.updateOne({ id: board.id, changes: board }, state)
-  ),
-  on(deleteBoard, (state, { id }) =>
-    adapter.removeOne(id, state)
-  ),
-  on(selectBoard, (state, { id }) =>
-    ({ ...state, selectedBoardId: id })
   )
 );
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = adapter.getSelectors();

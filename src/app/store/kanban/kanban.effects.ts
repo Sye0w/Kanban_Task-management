@@ -1,25 +1,20 @@
-import { switchMap, map, catchError, of, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import * as KanbanActions from './kanban.actions';
 import { KanbanFetchService } from '../../services/http-service/kanban-fetch.service';
-import { loadBoards, loadBoardsFailure, loadBoardsSuccess } from './kanban.actions';
-import { IBoard, IBoardsData } from './kanban.model';
+
 
 @Injectable()
-export class kanbanEffects {
-  fetchBoards$ = createEffect(() =>
+export class KanbanEffects {
+  loadBoards$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadBoards),
-      switchMap(() =>
-        this.kanbanFetch.fetchData().pipe(
-          // map((boards) => boards.boards ),
-          // tap((data) => console.log(data)),
-          map((bd:IBoardsData ) =>{
-            console.log(bd.boards)
-            let board = bd.boards
-            return loadBoardsSuccess({board})
-            }), // Ensure 'boards' is an array
-          catchError((error) => of(loadBoardsFailure({ error: error.message })))
+      ofType(KanbanActions.loadBoards),
+      mergeMap(() => this.kanbanService.fetchData()
+        .pipe(
+          map(data => KanbanActions.loadBoardsSuccess({ boards: data.boards })),
+          catchError(error => of(KanbanActions.loadBoardsFailure({ error })))
         )
       )
     )
@@ -27,6 +22,6 @@ export class kanbanEffects {
 
   constructor(
     private actions$: Actions,
-    private kanbanFetch: KanbanFetchService
+    private kanbanService: KanbanFetchService
   ) {}
 }

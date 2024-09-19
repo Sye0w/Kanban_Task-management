@@ -1,24 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBoard, IBoardsData } from '../../store/kanban/kanban.model';
+import { IBoardsData } from '../../store/kanban/kanban.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class KanbanFetchService {
   private dataUrl: string = '../../../assets/data.json';
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(){
-    this.fetchData().subscribe(data => {
-      console.log('data:' + data);
-    });
-  }
-
   fetchData(): Observable<IBoardsData> {
-    return this.http.get<IBoardsData>(this.dataUrl)
+    return this.http.get<IBoardsData>(this.dataUrl);
   }
 }

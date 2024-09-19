@@ -8,14 +8,13 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ActionReducer, MetaReducer } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
-import { kanbanEffects } from './store/kanban/kanban.effects';
+import { KanbanEffects } from './store/kanban/kanban.effects';
 import { provideEffects } from '@ngrx/effects';
 import { appReducers } from './store/reducers';
 
-
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    keys: ['theme', 'kanbanBoards','router'],
+    keys: ['theme', 'kanbanBoards', 'router'],
     rehydrate: true
   })(reducer);
 }
@@ -28,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideRouterStore(),
     provideRouter(routes),
     provideHttpClient(),
-    provideEffects([kanbanEffects]),
+    provideEffects([KanbanEffects]),
     provideStore(appReducers, { metaReducers }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
   ]
