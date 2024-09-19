@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ModalService } from './services/modal.service';
+import { ModalService } from './services/modal/modal.service';
 
 @Component({
   selector: 'app-root',
