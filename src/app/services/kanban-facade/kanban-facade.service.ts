@@ -11,13 +11,13 @@ import { Board } from '../../store/kanban/kanban.model';
 })
 export class KanbanFacadeService {
   boards$: Observable<Board[]> = this.store.select(KanbanSelectors.selectAllBoards);
-  selectedBoardId: Observable<Board | undefined> = this.store.select(KanbanSelectors.getSelectedBoardId)
+  selectedBoardId$: Observable<Board | undefined> = this.store.select(KanbanSelectors.getSelectedBoardId)
   loading$: Observable<boolean> = this.store.select(KanbanSelectors.selectKanbanLoading);
   error$: Observable<any> = this.store.select(KanbanSelectors.selectKanbanError);
   boardsCount$: Observable<number> = this.store.select(KanbanSelectors.selectBoardsCount);
 
   constructor(private store: Store) {
-    this.selectedBoardId.subscribe(boardsCount => console.log('board columns' + boardsCount?.columns));
+    this.selectedBoardId$.subscribe(boardsCount => console.log('board columns' + boardsCount?.columns));
   }
 
   loadBoards() {

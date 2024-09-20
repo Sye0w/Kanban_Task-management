@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LogoComponent } from '../logo/logo.component';
 import { ModalService } from '../../services/modal/modal.service';
@@ -13,10 +13,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   @Input() opened!: boolean;
   boardsCount$ = this.kanbanFacade.boardsCount$;
   boards$ = this.kanbanFacade.boards$;
+  selectedBoard!: string | undefined;
 
   constructor(
     private modalService: ModalService,
@@ -25,9 +26,17 @@ export class SidebarComponent {
 
   ngOnInit() {
     this.kanbanFacade.loadBoards();
+
+    this.kanbanFacade.selectedBoardId$.subscribe( board => this.selectedBoard = board?.name)
   }
 
   toggleSidenav() {
     this.modalService.toggleSidebar();
+  }
+
+  trackSelectedBoard(name: string | undefined): { [key: string]: boolean } {
+    return {
+      'selected-board': name === this.selectedBoard
+    };
   }
 }

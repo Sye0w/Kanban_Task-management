@@ -12,7 +12,7 @@ import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.
 })
 
 export class DashboardViewComponent {
-  selectedBoard$ = this.kanbanFacade.selectedBoardId
+  selectedBoard$ = this.kanbanFacade.selectedBoardId$
   constructor(private kanbanFacade: KanbanFacadeService){}
 
 }
