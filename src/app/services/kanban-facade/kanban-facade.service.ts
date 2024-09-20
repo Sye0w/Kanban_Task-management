@@ -16,9 +16,7 @@ export class KanbanFacadeService {
   boardsCount$: Observable<number> = this.store.select(KanbanSelectors.selectBoardsCount);
 
   constructor(private store: Store) {
-    // this.getBoardsCount()
     this.boardsCount$.subscribe(boardsCount => console.log('Counts: ' + boardsCount));
-
   }
 
   loadBoards() {

@@ -23,8 +23,49 @@ aside {
 
   .sidebar-content{
     padding-left: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
     h4{
       font-size: .75rem;
+    }
+
+    .boardsname-list{
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      font-size: .9375rem;
+
+      li{
+        list-style-type: none;
+        height: 2.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+
+        img{
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+
+      .add-board-btn{
+        cursor: pointer;
+        height: 2.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: $main-purple;
+
+
+        svg{
+          path{
+            fill: $main-purple;
+
+          }
+        }
+      }
     }
   }
 

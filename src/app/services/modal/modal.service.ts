@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-  private sidebarSubject = new BehaviorSubject<boolean>(false);
+  private sidebarSubject = new BehaviorSubject<boolean>(true);
   sidebarActive = this.sidebarSubject.asObservable()
 
   constructor() { }
