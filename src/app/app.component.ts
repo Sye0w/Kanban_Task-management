@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
   constructor(private modalService: ModalService){}
 
   ngOnInit(){
-    this.modalService.sidebarActive.subscribe(
+    this.modalService.sidebarActive$.subscribe(
       (active) => this.sidebarOpened = active
     )
   }

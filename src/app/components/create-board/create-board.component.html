@@ -1,0 +1,35 @@
+@if(modalActive){
+  <section class="modal" [ngClass]="active()" (click)="toggleModal()">
+    <!-- create modal here -->
+  </section>
+  <section class="createboard-modal" [ngClass]="active()" (click)="$event.stopPropagation()">
+    <h4>Add New Board</h4>
+    <form #boardForm="ngForm" (ngSubmit)="onSubmit()" class="board-form">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="board.name" required #name="ngModel" placeholder="e.g. Web Design">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+          Board name is required.
+        </div>
+      </div>
+      <div id="columns-grp">
+        <label>Columns</label>
+        @for(column of board.columns; track column; let i = $index) {
+          <div class="column-item">
+            <input type="text" [(ngModel)]="column.title" [name]="'column' + i" required #columnInput="ngModel" placeholder="e.g. Todo">
+            <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeColumn(i)">
+            <div *ngIf="columnInput.invalid && (columnInput.dirty || columnInput.touched)" class="error-message">
+              Column title is required.
+            </div>
+          </div>
+        }
+      </div>
+      <button id="column-btn" type="button" (click)="addColumn()">
+        + Add New Column
+      </button>
+      <button id="board-btn"  type="submit" >
+        Create New Board
+      </button>
+    </form>
+  </section>
+}

@@ -5,11 +5,12 @@ import { ModalService } from '../../services/modal/modal.service';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CreateBoardComponent } from "../create-board/create-board.component";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MatSidenavModule, LogoComponent, CommonModule,RouterModule],
+  imports: [MatSidenavModule, LogoComponent, CommonModule, RouterModule, CreateBoardComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -26,7 +27,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.kanbanFacade.loadBoards();
-
     this.kanbanFacade.selectedBoardId$.subscribe( board => this.selectedBoard = board?.name)
   }
 
@@ -39,4 +39,9 @@ export class SidebarComponent implements OnInit {
       'selected-board': name === this.selectedBoard
     };
   }
+
+  toggleCraeteBoard(){
+    this.modalService.toggleCreateBoard()
+  }
+
 }

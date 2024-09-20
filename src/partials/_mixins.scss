@@ -12,6 +12,31 @@
   @include box-shadow;
 }
 
+@mixin input-style-mixin($font, $blackrussian) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: $font;
+
+  input {
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #828FA340;
+    color: $blackrussian;
+    font-size: 500;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #828FA340;
+    }
+  }
+}
+
 
 @mixin button-style(
   $width: auto,
@@ -34,7 +59,6 @@
   border-radius: $border-radius;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
-
   &:hover {
     background-color: $hover-background-color;
   }
@@ -49,4 +73,11 @@
   width: $width;
   height: $height;
   cursor: $cursor;
+}
+
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
