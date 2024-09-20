@@ -4,11 +4,12 @@ import { LogoComponent } from '../logo/logo.component';
 import { ModalService } from '../../services/modal/modal.service';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MatSidenavModule, LogoComponent, CommonModule],
+  imports: [MatSidenavModule, LogoComponent, CommonModule,RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })

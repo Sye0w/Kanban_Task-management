@@ -5,4 +5,4 @@ export const selectRouterState = createFeatureSelector<RouterReducerState>('rout
 
 const { selectRouteParam } = getRouterSelectors(selectRouterState);
 
-export const getSelectedBoardId = selectRouteParam('id');
+export const selectBoardId = selectRouteParam('id');

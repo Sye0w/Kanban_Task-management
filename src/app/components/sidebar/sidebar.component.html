@@ -6,7 +6,7 @@
         @if(boards$ | async; as boards){
           <ul class="boardsname-list">
             @for(board of boards; track board.id; let i = $index){
-              <li [title]="'Open ' + board.name + ' board'">
+              <li [title]="'Open ' + board.name + ' board'" [routerLink]="['/dashboard', board.name]">
                 <img src="../../../assets/assets/icon-board.svg" alt="">
                 {{ board.name }}
               </li>
