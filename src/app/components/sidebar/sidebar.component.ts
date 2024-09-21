@@ -6,11 +6,12 @@ import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CreateBoardComponent } from "../create-board/create-board.component";
+import { SidebarSettingsComponent } from "../sidebar-settings/sidebar-settings.component";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MatSidenavModule, LogoComponent, CommonModule, RouterModule, CreateBoardComponent],
+  imports: [MatSidenavModule, LogoComponent, CommonModule, RouterModule, CreateBoardComponent, SidebarSettingsComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -30,9 +31,7 @@ export class SidebarComponent implements OnInit {
     this.kanbanFacade.selectedBoardId$.subscribe( board => this.selectedBoard = board?.name)
   }
 
-  toggleSidenav() {
-    this.modalService.toggleSidebar();
-  }
+  
 
   trackSelectedBoard(name: string | undefined): { [key: string]: boolean } {
     return {

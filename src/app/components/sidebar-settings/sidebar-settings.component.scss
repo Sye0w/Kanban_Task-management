@@ -1,0 +1,59 @@
+@use '../../../partials/variables' as * ;
+@use '../../../partials/mixins.scss' as * ;
+
+.sidebar-settings {
+  position: absolute;
+  bottom: 2.125rem;
+  padding-left: 1.5rem;
+  align-self: flex-start;
+
+  div {
+    
+    .theme {
+      background-color: $selago;
+      width: 15.6875rem;
+      height: 3rem;
+      border-radius: .375rem;
+      display: flex;
+      gap: 1.375rem;
+      justify-content: center;
+      padding-block: .9375rem;
+
+      .toggle-div {
+        width: 2.5rem;
+        height: 1.25rem;
+        background-color: $main-purple;
+        border-radius: .75rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0 .25rem;
+        transition: background-color 0.3s ease-in-out;
+
+        .toggle {
+          width: .875rem;
+          height: .875rem;
+          background-color: $white;
+          border-radius: 50%;
+          transition: transform 0.3s ease-in-out;
+
+          &.active {
+            transform: translateX(1.125rem);
+          }
+        }
+      }
+    }
+
+    .hide-toggle {
+      margin-top: .75rem;
+      margin-left: 1rem;
+      display: flex;
+      gap: 0.9375rem;
+      cursor: pointer;
+      p {
+        font-size: .9375rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
