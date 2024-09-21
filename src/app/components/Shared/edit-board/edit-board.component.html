@@ -1,0 +1,31 @@
+@if(modalActive){
+  <section class="modal" [ngClass]="active()" (click)="toggleModal()">
+    <!-- Modal backdrop -->
+  </section>
+  <section class="createboard-modal" [ngClass]="active()" (click)="$event.stopPropagation()">
+    <h4>Edit Board</h4>
+    @if (editedBoard) {
+      <form (ngSubmit)="onSubmit()" class="board-form">
+        <div>
+          <label for="name">Board Name</label>
+          <input type="text" id="name" name="name" [ngModel]="editedBoard.name" (ngModelChange)="updateBoardName($event)" required placeholder="e.g. Web Design">
+        </div>
+        <div id="columns-grp">
+          <label>Board Columns</label>
+          @for(column of editedBoard.columns; track column; let i = $index) {
+            <div class="column-item">
+              <input type="text" [ngModel]="column.name" (ngModelChange)="updateColumnName(i, $event)" [name]="'column' + i" required placeholder="e.g. Todo">
+              <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeColumn(i)">
+            </div>
+          }
+        </div>
+        <button type="button" id="column-btn" (click)="addColumn()">
+          + Add New Column
+        </button>
+        <button type="submit"  [disabled]="!isFormValid()">
+          Save Changes
+        </button>
+      </form>
+    }
+  </section>
+}

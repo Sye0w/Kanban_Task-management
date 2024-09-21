@@ -31,13 +31,14 @@
   background-color: $white;
   @include box-shadow($color:#364e7e40,$y:10,$blur:20px );
   border-radius: .5rem;
+  z-index: 2;
   padding: 1rem;
   width: 12rem;
   height: 5.875rem;
   position: absolute;
   top: 6rem;
   right: 1.75rem;
-  z-index: 1;
+
   list-style: none;
   font-weight:500;
 

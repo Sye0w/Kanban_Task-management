@@ -13,3 +13,6 @@ export const loadBoardsFailure = createAction(
 
 export const createBoard = createAction(
   '[Kanban] Create Board',  props<{ board: Board }>());
+
+  export const editBoard = createAction('[Kanban] Edit Board',
+    props<{ board: Board }>());

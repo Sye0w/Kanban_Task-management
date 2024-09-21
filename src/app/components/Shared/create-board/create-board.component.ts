@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { ModalService } from '../../services/modal/modal.service';
-import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
-import { Board,Column } from '../../store/kanban/kanban.model';
+import { ModalService } from '../../../services/modal/modal.service';
+import { KanbanFacadeService } from '../../../services/kanban-facade/kanban-facade.service';
+import { Board } from '../../../store/kanban/kanban.model';
 
 @Component({
   selector: 'app-create-board',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './create-board.component.html',
-  styleUrl: './create-board.component.scss'
+  styleUrl: '../shared.component.scss'
 })
+
 export class CreateBoardComponent implements OnInit {
   modalActive: boolean = false;
   board: Omit<Board, 'id'> = {

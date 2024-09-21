@@ -32,4 +32,8 @@ export class KanbanFacadeService {
   createBoard(board: Board) {
     this.store.dispatch(KanbanActions.createBoard({ board }));
   }
+
+  editBoard(board: Board) {
+    this.store.dispatch(KanbanActions.editBoard({ board }));
+  }
 }

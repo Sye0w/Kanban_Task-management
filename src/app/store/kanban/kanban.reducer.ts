@@ -28,7 +28,10 @@ export const kanbanReducer = createReducer(
   ),
   on(KanbanActions.createBoard, (state, { board }) =>
     adapter.addOne(board, state)
-  )
+  ),
+  on(KanbanActions.editBoard, (state, { board }) =>
+    adapter.updateOne({ id: board.id, changes: board }, state)
+  ),
 );
 
 export const {
