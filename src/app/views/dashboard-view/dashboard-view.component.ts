@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Board } from '../../store/kanban/kanban.model';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
+import { CommonModule } from '@angular/common';
+import { ColumnsComponent } from "../../components/columns/columns.component";
 
 @Component({
   selector: 'app-dashboard-view',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ColumnsComponent],
   templateUrl: './dashboard-view.component.html',
   styleUrl: './dashboard-view.component.scss'
 })
 
 export class DashboardViewComponent {
-  selectedBoard$ = this.kanbanFacade.selectedBoardId$
-  constructor(private kanbanFacade: KanbanFacadeService){}
+  @Input() selectedBoard$ = this.kanbanFacade.selectedBoardId$;
 
+  constructor(private kanbanFacade: KanbanFacadeService) {}
+
+  
 }

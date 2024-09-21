@@ -1,0 +1,23 @@
+<div class="columns">
+  @if(selectedBoard$ | async; as board ){
+    @for (column of board.columns; track column.name) {
+      <ul>
+        <div class="column-header">
+          <div class="column-icon" [ngStyle]="{'background-color': getColumnColors(column.name)}"></div>
+          <h5>{{ column.name }} ({{ column.tasks.length }})</h5>
+        </div>
+        <ul class="tasks">
+          @for (task of column.tasks; track task.title) {
+            <li>
+              <h4>{{ task.title }}</h4>
+              <p>{{ task.subtasks.length }} Subtasks</p>
+            </li>
+          }
+        </ul>
+      </ul>
+    }
+    <div class="add-columns">
+      <p>+ New Column</p>
+    </div>
+  }
+</div>

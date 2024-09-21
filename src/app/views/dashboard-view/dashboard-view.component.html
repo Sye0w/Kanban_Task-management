@@ -1,1 +1,7 @@
-<p>dashboard-view works!</p>
+@if (selectedBoard$ | async; as board) {
+  <section>
+    <app-columns/>
+  </section>
+} @else {
+  <p>No board selected</p>
+}
