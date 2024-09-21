@@ -16,7 +16,7 @@
         <label>Columns</label>
         @for(column of board.columns; track column; let i = $index) {
           <div class="column-item">
-            <input type="text" [(ngModel)]="column.title" [name]="'column' + i" required #columnInput="ngModel" placeholder="e.g. Todo">
+            <input type="text" [(ngModel)]="column.name" [name]="'column' + i" required #columnInput="ngModel" placeholder="e.g. Todo">
             <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeColumn(i)">
             <div *ngIf="columnInput.invalid && (columnInput.dirty || columnInput.touched)" class="error-message">
               Column title is required.

@@ -5,7 +5,6 @@ import * as KanbanActions from '../../store/kanban/kanban.actions';
 import * as KanbanSelectors from '../../store/kanban/kanban.selectors';
 import { Board } from '../../store/kanban/kanban.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +15,7 @@ export class KanbanFacadeService {
   error$: Observable<any> = this.store.select(KanbanSelectors.selectKanbanError);
   boardsCount$: Observable<number> = this.store.select(KanbanSelectors.selectBoardsCount);
 
-  constructor(private store: Store) {
-    this.selectedBoardId$.subscribe(boardsCount => console.log('board columns' + boardsCount?.columns));
-  }
+  constructor(private store: Store) {}
 
   loadBoards() {
     this.store.dispatch(KanbanActions.loadBoards());
@@ -30,5 +27,9 @@ export class KanbanFacadeService {
 
   getBoardsCount(): Observable<number> {
     return this.boardsCount$;
+  }
+
+  createBoard(board: Board) {
+    this.store.dispatch(KanbanActions.createBoard({ board }));
   }
 }

@@ -14,7 +14,7 @@ import { appReducers } from './store/reducers';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    keys: ['theme', 'kanbanBoards', 'router'],
+    keys: ['theme', 'kanban', 'router'],
     rehydrate: true
   })(reducer);
 }

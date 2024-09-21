@@ -1,5 +1,3 @@
-// src/app/store/kanban/kanban.model.ts
-
 import { EntityState } from '@ngrx/entity';
 
 export interface Subtask {

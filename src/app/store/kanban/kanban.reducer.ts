@@ -9,7 +9,7 @@ export interface State extends EntityState<Board> {
 }
 
 export const adapter: EntityAdapter<Board> = createEntityAdapter<Board>({
-  selectId: (board: Board) => board.name 
+  selectId: (board: Board) => board.name
 });
 
 export const initialState: State = adapter.getInitialState({
@@ -25,6 +25,9 @@ export const kanbanReducer = createReducer(
   ),
   on(KanbanActions.loadBoardsFailure, (state, { error }) =>
     ({ ...state, loading: false, error })
+  ),
+  on(KanbanActions.createBoard, (state, { board }) =>
+    adapter.addOne(board, state)
   )
 );
 
