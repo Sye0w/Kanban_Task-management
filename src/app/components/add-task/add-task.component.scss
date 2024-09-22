@@ -3,6 +3,7 @@
 
 #add-btn{
   @include button-style();
+  border-style: none !important;
 }
 
 
@@ -15,9 +16,7 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
 
 
 
@@ -35,6 +34,7 @@
     border: 1px solid #888;
     width: 29.25rem;
 
+
     border-radius: .375rem;
 
     .form-header{
@@ -50,7 +50,6 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      height: 500px;
 
       label{
         font-size: .75rem;
@@ -142,6 +141,7 @@
     }
 
     button{
+      border-style: none !important;
       @include button-style($height: 2.5rem)
     }
   }
@@ -151,3 +151,26 @@
 
 
 
+
+@media (max-width: 768px) {
+  .modal-content{
+    width: 21.4375rem !important;
+    height: 41.1875rem;
+    margin-inline: 1rem;
+    margin-top: 13rem;
+    margin-bottom: 3rem;
+
+  }
+
+  #add-btn{
+
+    @include flex-center();
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    height: 2rem !important;
+    width: 3rem !important;
+    span{
+      display: none;
+    }
+  }
+}

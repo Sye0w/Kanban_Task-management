@@ -15,10 +15,15 @@ header{
     gap: 2rem;
 
     h3{
+
       font-size: 1.5rem;
       font-weight: 700;
+
+      img{
+        display: none;
+      }
     }
-    
+
   }
 
 
@@ -30,11 +35,26 @@ header{
     align-items: center;
     gap: 1.5rem;
 
-
-
-
   }
 }
 
+@media (max-width: 768px){
+  header{
+    height: 4rem;
+    .header-grp-1{
+      gap: 1rem !important;
 
+      h3{
+        display: flex;
+        align-items: center !important;
+        gap: .75rem;
+
+        img{
+          display: block;
+        }
+      }
+    }
+  }
+
+}
 
