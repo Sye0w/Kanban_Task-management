@@ -3,14 +3,14 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as KanbanActions from '../../store/kanban/kanban.actions';
 import * as KanbanSelectors from '../../store/kanban/kanban.selectors';
-import { Board } from '../../store/kanban/kanban.model';
+import { IBoard } from '../../store/kanban/kanban.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KanbanFacadeService {
-  boards$: Observable<Board[]> = this.store.select(KanbanSelectors.selectAllBoards);
-  selectedBoardId$: Observable<Board | undefined> = this.store.select(KanbanSelectors.getSelectedBoardId)
+  boards$: Observable<IBoard[]> = this.store.select(KanbanSelectors.selectAllBoards);
+  selectedBoardId$: Observable<IBoard | undefined> = this.store.select(KanbanSelectors.getSelectedBoardId)
   loading$: Observable<boolean> = this.store.select(KanbanSelectors.selectKanbanLoading);
   error$: Observable<any> = this.store.select(KanbanSelectors.selectKanbanError);
   boardsCount$: Observable<number> = this.store.select(KanbanSelectors.selectBoardsCount);
@@ -21,7 +21,7 @@ export class KanbanFacadeService {
     this.store.dispatch(KanbanActions.loadBoards());
   }
 
-  getBoardByName(name: string): Observable<Board | undefined> {
+  getBoardByName(name: string): Observable<IBoard | undefined> {
     return this.store.select(KanbanSelectors.selectBoardByName(name));
   }
 
@@ -29,11 +29,17 @@ export class KanbanFacadeService {
     return this.boardsCount$;
   }
 
-  createBoard(board: Board) {
+  createBoard(board: IBoard) {
     this.store.dispatch(KanbanActions.createBoard({ board }));
   }
 
-  editBoard(board: Board) {
+  editBoard(board: IBoard) {
     this.store.dispatch(KanbanActions.editBoard({ board }));
+  }
+
+  deleteBoard(board: IBoard) {
+    console.log('Deleting board dispatched');
+
+    this.store.dispatch(KanbanActions.deleteBoard({ boardId: board.id }));
   }
 }

@@ -17,17 +17,17 @@ export interface Column {
   tasks: Task[];
 }
 
-export interface Board {
+export interface IBoard {
   id: string;
   name: string;
   columns: Column[];
 }
 
 export interface IBoardsData {
-  boards: Board[];
+  boards: IBoard[];
 }
 
-export interface State extends EntityState<Board> {
+export interface State extends EntityState<IBoard> {
   loading: boolean;
   error: any;
 }

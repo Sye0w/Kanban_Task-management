@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { ModalService } from '../../../services/modal/modal.service';
 import { KanbanFacadeService } from '../../../services/kanban-facade/kanban-facade.service';
-import { Board } from '../../../store/kanban/kanban.model';
+import { IBoard } from '../../../store/kanban/kanban.model';
 
 @Component({
   selector: 'app-create-board',
@@ -16,7 +16,7 @@ import { Board } from '../../../store/kanban/kanban.model';
 
 export class CreateBoardComponent implements OnInit {
   modalActive: boolean = false;
-  board: Omit<Board, 'id'> = {
+  board: Omit<IBoard, 'id'> = {
     name: '',
     columns: [
       {
@@ -69,7 +69,7 @@ export class CreateBoardComponent implements OnInit {
 
   onSubmit() {
     if (this.isFormValid()) {
-      const newBoard: Board = {
+      const newBoard: IBoard = {
         ...this.board,
         id: uuidv4()
       };

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalService } from '../../../services/modal/modal.service';
 import { KanbanFacadeService } from '../../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
-import { Board, Column } from '../../../store/kanban/kanban.model';
+import { IBoard, Column } from '../../../store/kanban/kanban.model';
 import { FormsModule } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 
@@ -15,8 +15,8 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class EditBoardComponent implements OnInit, OnDestroy {
   modalActive: boolean = false;
-  selectedBoard$: Observable<Board | undefined>;
-  editedBoard: Board | undefined;
+  selectedBoard$: Observable<IBoard | undefined>;
+  editedBoard: IBoard | undefined;
   private subscription: Subscription = new Subscription();
 
   constructor(

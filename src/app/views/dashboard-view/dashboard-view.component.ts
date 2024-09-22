@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Board } from '../../store/kanban/kanban.model';
+import { IBoard } from '../../store/kanban/kanban.model';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
 import { ColumnsComponent } from "../../components/columns/columns.component";
@@ -18,5 +18,5 @@ export class DashboardViewComponent {
 
   constructor(private kanbanFacade: KanbanFacadeService) {}
 
-  
+
 }

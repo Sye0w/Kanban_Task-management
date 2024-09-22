@@ -9,8 +9,10 @@ export class ModalService {
   sidebarActive$ = this.sidebarSubject.asObservable();
   private createBoardSubject = new BehaviorSubject<boolean>(false);
   createBoardActive$ = this.createBoardSubject.asObservable();
-  private editBoardSubject = new BehaviorSubject<boolean>(true);
+  private editBoardSubject = new BehaviorSubject<boolean>(false);
   editBoardActive$ = this.editBoardSubject.asObservable();
+  private deleteBoardSubject = new BehaviorSubject<boolean>(false);
+  deleteBoardActive$ = this.deleteBoardSubject.asObservable();
 
   constructor() { }
 
@@ -24,5 +26,9 @@ export class ModalService {
 
   toggleEditBoard() {
     this.editBoardSubject.next(!this.editBoardSubject.value);
+  }
+
+  toggleDeleteBoard() {
+    this.deleteBoardSubject.next(!this.deleteBoardSubject.value);
   }
 }

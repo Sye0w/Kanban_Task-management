@@ -1,0 +1,17 @@
+@if(modalActive){
+  <section class="modal"  (click)="toggleDeleteBoard()">
+    <!-- Modal backdrop -->
+  </section>
+  <section id="delete-modal"   (click)="$event.stopPropagation()">
+    <h4>Delete Board</h4>
+    <p>
+      Are you sure , you want to delete the '{{ boardName }}' board?
+      This action will remove all columns and tasks and cannot be reversed.
+    </p>
+
+    <div class="btn-grp">
+      <button class="delete-btn" (click)="deleteBoard()">Delete</button>
+      <button class="cancel-btn" (click)="toggleDeleteBoard()" title="cancel">Cancel</button>
+    </div>
+  </section>
+}

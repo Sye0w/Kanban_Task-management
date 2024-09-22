@@ -35,11 +35,7 @@
     top: 20%;
     z-index: 3;
 
-    h4{
-      align-self: start;
-      font-size: 1.125rem;
-      font-weight: 700;
-    }
+
     .board-form{
       width: 100%;
       display: flex;
@@ -102,6 +98,70 @@
         color: $white;
         font-size: .8125rem !important;
         @include flex-center;
+      }
+    }
+  }
+
+  h4{
+    align-self: start;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  #delete-modal{
+    font-family: $font !important;
+    height: 14.3125rem;
+    background-color: $white;
+    width: 30rem;
+    position: absolute;
+    left: 40%;
+    right: 10%;
+    top: 20%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: start;
+    justify-content: start;
+    padding-inline: 2rem;
+    padding-top: 2rem;
+
+    border-radius: .375rem;
+
+    h4{
+      color: $mendy;
+    }
+
+    p{
+      color: $regent-gray;
+      font-size: .8125rem;
+      font-weight: 500;
+    }
+
+    .btn-grp{
+      display: flex;
+      gap: 1rem;
+
+      button{
+        height: 2.5rem;
+        width: 12.5rem;
+        border-radius: 1.25rem;
+        border-style: none;
+        font-size: .8125rem;
+        font-weight: 700;
+        font-family: $font !important;
+        cursor: pointer;
+
+        &.delete-btn{
+          background-color: $mendy;
+          color: $white;
+        }
+
+        
+        &.cancel-btn{
+          background-color: #635FC71A;
+          color: $main-purple;
+        }
       }
     }
   }

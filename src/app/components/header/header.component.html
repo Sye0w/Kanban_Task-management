@@ -2,7 +2,9 @@
   <div class="header-grp-1">
     <app-logo/>
     <h3>
-      Platform Launch
+      @if( board$ | async; as board){
+        {{ board.name }}
+      }
     </h3>
   </div>
   <div class="header-action">
