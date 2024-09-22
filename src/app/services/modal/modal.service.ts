@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ModalService {
   private sidebarSubject = new BehaviorSubject<boolean>(false);
   sidebarActive$ = this.sidebarSubject.asObservable();
@@ -13,6 +14,8 @@ export class ModalService {
   editBoardActive$ = this.editBoardSubject.asObservable();
   private deleteBoardSubject = new BehaviorSubject<boolean>(false);
   deleteBoardActive$ = this.deleteBoardSubject.asObservable();
+  private mobileNavSubject = new BehaviorSubject<boolean>(true);
+  mobileNavActive$ = this.mobileNavSubject.asObservable();
 
   constructor() { }
 
@@ -30,5 +33,10 @@ export class ModalService {
 
   toggleDeleteBoard() {
     this.deleteBoardSubject.next(!this.deleteBoardSubject.value);
+  }
+
+  toggleMobileNav() {
+    console.log('mobile nav toggled');
+    this.mobileNavSubject.next(!this.mobileNavSubject.value);
   }
 }

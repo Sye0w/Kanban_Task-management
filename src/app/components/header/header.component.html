@@ -1,15 +1,26 @@
 <header>
   <div class="header-grp-1">
     <app-logo/>
-    <h3>
-      @if( board$ | async; as board){
+    <h3 id="base-h3">
+      @if (board$ | async; as board) {
         {{ board.name }}
       }
-      <img src="../../../assets/assets/icon-chevron-down.svg" alt="">
     </h3>
+    <div id="mobile" (click)="toggleNav()">
+      @if (board$ | async; as board) {
+        {{ board.name }}
+      }
+      @if ((mobileNavActive$ | async) === true) {
+        <img src="../../../assets/assets/icon-chevron-up.svg" alt="">
+      } @else {
+        <img src="../../../assets/assets/icon-chevron-down.svg" alt="">
+      }
+    </div>
   </div>
   <div class="header-action">
     <app-add-task/>
     <app-header-settings/>
   </div>
 </header>
+
+<app-mobile-nav/>

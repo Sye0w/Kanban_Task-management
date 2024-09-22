@@ -1,0 +1,35 @@
+@use '../../../partials/variables' as * ;
+@use '../../../partials/mixins' as * ;
+
+@media (min-width: 768px){
+  .mobile-nav{
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  section{
+    width: 100%;
+    z-index: 2;
+    background-color: #00000045;
+    backdrop-filter: blur(0.075rem);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin-top: 4rem;
+  }
+
+  .mobile-nav{
+    padding-top: 1rem;
+    background-color: $white;
+    width: 16.5rem;
+    height: 20.125rem;
+    border-radius: .5rem;
+    position: absolute;
+    left: 3.25rem;
+    top: 1.125rem;
+  }
+
+}
+

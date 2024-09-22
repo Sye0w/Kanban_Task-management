@@ -14,16 +14,14 @@ header{
     align-items: center;
     gap: 2rem;
 
-    h3{
-
+    #base-h3{
       font-size: 1.5rem;
       font-weight: 700;
-
-      img{
-        display: none;
-      }
     }
+  }
 
+  #mobile{
+    display: none;
   }
 
 
@@ -38,21 +36,26 @@ header{
   }
 }
 
-@media (max-width: 768px){
+@media (max-width: 425px){
   header{
     height: 4rem;
     .header-grp-1{
       gap: 1rem !important;
 
-      h3{
-        display: flex;
-        align-items: center !important;
-        gap: .75rem;
-
-        img{
-          display: block;
-        }
+      #base-h3{
+        display: none;
       }
+
+      #mobile{
+        font-size: 1.125rem;
+        font-weight: 700;
+        display: block;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        cursor: pointer;
+      }
+
     }
   }
 
