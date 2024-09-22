@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as KanbanActions from '../../store/kanban/kanban.actions';
+import { KanbanActions } from '../../store/kanban/kanban.actions';
 import * as KanbanSelectors from '../../store/kanban/kanban.selectors';
 import { IBoard } from '../../store/kanban/kanban.model';
 

@@ -14,7 +14,7 @@ export class ModalService {
   editBoardActive$ = this.editBoardSubject.asObservable();
   private deleteBoardSubject = new BehaviorSubject<boolean>(false);
   deleteBoardActive$ = this.deleteBoardSubject.asObservable();
-  private mobileNavSubject = new BehaviorSubject<boolean>(true);
+  private mobileNavSubject = new BehaviorSubject<boolean>(false);
   mobileNavActive$ = this.mobileNavSubject.asObservable();
 
   constructor() { }

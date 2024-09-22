@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { IBoard } from './kanban.model';
-import * as KanbanActions from './kanban.actions';
+import { KanbanActions } from './kanban.actions';
 
 export interface State extends EntityState<IBoard> {
   loading: boolean;
@@ -9,7 +9,7 @@ export interface State extends EntityState<IBoard> {
 }
 
 export const adapter: EntityAdapter<IBoard> = createEntityAdapter<IBoard>({
-  selectId: (board: IBoard) => board.name
+  selectId: (board: IBoard) => board?.name
 });
 
 export const initialState: State = adapter.getInitialState({

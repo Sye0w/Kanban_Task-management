@@ -8,7 +8,7 @@
   align-self: flex-start;
 
   div {
-    
+
     .theme {
       background-color: $selago;
       width: 15.6875rem;
@@ -55,5 +55,19 @@
         font-weight: 700;
       }
     }
+  }
+}
+
+@media (max-width: 425px) {
+  .sidebar-settings{
+    padding-left: .8rem !important;
+
+    .theme{
+      width: 14.6875rem !important;
+    }
+  }
+
+  .hide-toggle{
+    display: none!important;
   }
 }

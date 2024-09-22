@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
-import * as KanbanActions from './kanban.actions';
+import { KanbanActions } from './kanban.actions';
 import { KanbanFetchService } from '../../services/http-service/kanban-fetch.service';
 import { Store } from '@ngrx/store';
 import { selectAllBoards } from './kanban.selectors';
