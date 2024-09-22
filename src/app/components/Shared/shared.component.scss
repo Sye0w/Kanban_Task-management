@@ -157,7 +157,7 @@
           color: $white;
         }
 
-        
+
         &.cancel-btn{
           background-color: #635FC71A;
           color: $main-purple;
@@ -167,3 +167,26 @@
   }
 
 
+  @media (max-width: 425px){
+    .createboard-modal{
+      width: 21.4375rem;
+      left: 5% !important;
+      right: 10%;
+      top: 20%;
+    }
+
+    #delete-modal{
+      width: 21.4375rem;
+      height: 17.75rem;
+      left: 5% !important;
+
+      .btn-grp{
+        display: flex;
+        flex-direction: column;
+
+        button{
+          width: 18.4375rem;
+        }
+      }
+    }
+  }
