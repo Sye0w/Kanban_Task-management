@@ -3,48 +3,47 @@
 </button>
 
 @if (visible) {
-  <div class="modal" >
-    <div class="modal-content">
+  <div class="modal">
+    <div class="modal-content" [ngClass]="{'dark': theme}">
       <div class="form-header">
         <h2>Add New Task</h2>
-        <img title="close" src="../../../assets/assets/icon-cross.svg" (click)="toggleForm()" alt="">
+        <img title="close" src="../../../assets/images/icon-cross.svg" (click)="toggleForm()" alt="">
       </div>
       <section>
-        <div class="form-grp-1">
+        <div class="form-grp-1" [ngClass]="{'dark': theme}">
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" placeholder="e.g. Take coffee break" [(ngModel)]="title">
+          <input type="text" name="title" id="title" placeholder="e.g. Take coffee break" [(ngModel)]="title" [ngClass]="{'dark': theme}">
         </div>
 
-        <div class="form-grp-1 desc">
+        <div class="form-grp-1 desc" [ngClass]="{'dark': theme}">
           <label for="desc">Description</label>
-          <textarea name="desc" id="desc" rows="5" [(ngModel)]="description"></textarea>
+          <textarea name="desc" id="desc" rows="5" [(ngModel)]="description" [ngClass]="{'dark': theme}"></textarea>
         </div>
 
-        <div class="form-grp-1 subtasks">
+        <div class="form-grp-1 subtasks" [ngClass]="{'dark': theme}">
           <label for="subtasks">Subtasks</label>
           <div id="item-grp">
-          @for (subtask of subtasks; track subtask; let i = $index) {
+            @for (subtask of subtasks; track subtask; let i = $index) {
               <div class="subtask-item">
-                <input type="text" [name]="'subtask-' + i" [id]="'subtask-' + i" placeholder="e.g. Make coffee" [(ngModel)]="subtask.title">
-                <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeSubtask(i)">
+                <input type="text" [name]="'subtask-' + i" [id]="'subtask-' + i" placeholder="e.g. Make coffee" [(ngModel)]="subtask.title" [ngClass]="{'dark': theme}">
+                <img src="../../../assets/images/icon-cross.svg" alt="cancel-icon" (click)="removeSubtask(i)">
               </div>
-
             }
           </div>
-          <button type="button" (click)="addSubtask()">
+          <button type="button" (click)="addSubtask()" [ngClass]="{'dark': theme}">
             + Add New Subtask
           </button>
         </div>
 
-        <div class="form-grp-1 status">
+        <div class="form-grp-1 status" [ngClass]="{'dark': theme}">
           <label for="status">Status</label>
-          <div class="select">
+          <div class="select" [ngClass]="{'dark': theme}">
             Todo
-            <img src="../../../assets/assets/icon-chevron-down.svg" alt="">
+            <img src="../../../assets/images/icon-chevron-down.svg" alt="">
           </div>
         </div>
       </section>
-      <button mat-button (click)="addTask()">
+      <button (click)="addTask()" [ngClass]="{'dark': theme}">
         Create Task
       </button>
     </div>

@@ -12,8 +12,6 @@
     background-color: #D9D7F0;
     cursor: not-allowed;
   }
-
-  
 }
 
 .modal {
@@ -27,10 +25,8 @@
   background-color: rgba(0,0,0,0.4);
   @include flex-center;
 
-
-
   .modal-content {
-    h2{
+    h2 {
       font-size: 1.125rem;
       font-weight: 700;
     }
@@ -40,62 +36,82 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    border: 1px solid #888;
     width: 29.25rem;
-
-
+    transition: background-color .3s ease;
     border-radius: .375rem;
 
-    .form-header{
+    &.dark {
+      background-color: $charade;
+      color: $white;
+    }
+
+    .form-header {
       display: flex;
       justify-content: space-between;
 
-      img{
+      img {
         @include close-icon-style
       }
     }
 
-    section{
+    section {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
 
-      label{
+      label {
         font-size: .75rem;
         font-weight: 700;
         color: $regent-gray;
       }
-      .form-grp-1{
+
+      .form-grp-1 {
         @include input-style-mixin($font, $blackrussian);
 
-        textarea{
+        &.dark {
+          background-color: $charade;
+          input, textarea, .select {
+            background-color: $charade;
+            color: $white;
+
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.5);
+            }
+          }
+        }
+
+        textarea {
           padding-left: 1rem;
           padding-block: .5rem;
           border: 1px solid #828FA340;
           border-radius: .25rem;
           color: $blackrussian;
-          &:focus{
+          transition: background-color .3s ease, color .3s ease;
+
+          &:focus {
             outline: none;
           }
 
-          &::placeholder{
+          &::placeholder {
             color: #828FA340;
           }
         }
-
       }
 
-      .subtasks{
+      .subtasks {
         display: flex;
         flex-direction: column;
 
-        button{
-          @include button-style($background-color: #635FC720 );
+        button {
+          @include button-style($background-color: #635FC720);
           border-style: none;
           color: $main-purple;
+          transition: background-color .3s ease, color .3s ease;
+
+
         }
 
-        #item-grp{
+        #item-grp {
           overflow-y: scroll;
           max-height: 7rem;
           padding-right: .5rem;
@@ -113,22 +129,23 @@
           }
         }
 
-        .subtask-item{
+        .subtask-item {
           display: flex;
           gap: .5rem;
           align-items: center;
 
-          input{
+          input {
             width: 24.0625rem;
+            transition: background-color .3s ease, color .3s ease;
           }
 
-          img{
+          img {
             @include close-icon-style
           }
         }
       }
 
-      .select{
+      .select {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -140,8 +157,9 @@
         color: $blackrussian;
         font-size: 500;
         cursor: pointer;
+        transition: background-color .3s ease, color .3s ease;
 
-        img{
+        img {
           width: .5875rem;
           height: .4938rem;
           margin-right:.5rem;
@@ -149,49 +167,43 @@
       }
     }
 
-    button{
+    button {
       border-style: none !important;
-      @include button-style($height: 2.5rem)
+      @include button-style($height: 2.5rem);
+      transition: background-color .3s ease, color .3s ease;
+
+
     }
   }
 }
 
-
-
-
-
-
 @media (max-width: 425px) {
-  .modal-content{
+  .modal-content {
     width: 21.4375rem !important;
     height: 41.1875rem;
     margin-inline: 1rem;
     margin-top: 13rem;
     margin-bottom: 3rem;
-
   }
 
-  #add-btn{
-
+  #add-btn {
     @include flex-center();
     font-size: 1.5rem !important;
     font-weight: 500;
     height: 2rem !important;
     width: 3rem !important;
-    span{
+    span {
       display: none;
     }
   }
 }
 
 @media (min-width: 768px) {
-  .modal-content{
+  .modal-content {
     width: 30rem !important;
     height: 41.1875rem;
     margin-inline: 1rem;
     margin-top: 13rem;
     margin-bottom: 3rem;
-
   }
-
 }

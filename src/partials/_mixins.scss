@@ -12,11 +12,12 @@
   @include box-shadow;
 }
 
-@mixin input-style-mixin($font, $blackrussian) {
+@mixin input-style-mixin($font, $blackrussian, $background-color: $white) {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   font-family: $font;
+  background-color: $background-color;
 
   input {
     height: 2.5rem;

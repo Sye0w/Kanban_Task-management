@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
+import { ThemeService } from '../../services/theme/theme.service';
 
 interface Subtask {
   title: string;
@@ -32,13 +33,18 @@ export class AddTaskComponent implements OnInit, OnDestroy {
   status: string = 'Todo';
   isButtonDisabled: boolean = true;
   private subscription!: Subscription;
+  theme: boolean = false;
 
-  constructor(private kanbanFacade: KanbanFacadeService) {}
+  constructor(private kanbanFacade: KanbanFacadeService,
+    private themeService: ThemeService
+  ) {}
 
   ngOnInit() {
     this.subscription = this.kanbanFacade.selectedBoardId$.subscribe(board => {
       this.isButtonDisabled = !board || board.columns.length === 0;
     });
+
+    this.themeService.theme$.subscribe(theme => this.theme = theme)
   }
 
   ngOnDestroy() {

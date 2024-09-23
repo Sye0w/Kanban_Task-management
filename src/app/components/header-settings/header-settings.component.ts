@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ModalService } from '../../services/modal/modal.service';
 import { EditBoardComponent } from "../Shared/edit-board/edit-board.component";
 import { DeleteBoardComponent } from "../Shared/delete-board/delete-board.component";
+import { ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-header-settings',
@@ -14,8 +15,15 @@ import { DeleteBoardComponent } from "../Shared/delete-board/delete-board.compon
 
 export class HeaderSettingsComponent {
   popup: boolean = false;
+  theme:boolean = false;
 
-  constructor(private modalService: ModalService){}
+  constructor(private modalService: ModalService,
+    private themeService: ThemeService
+  ){}
+
+  ngOnInit(){
+    this.themeService.theme$.subscribe(theme => this.theme = theme)
+  }
 
   togglePopup(){
     this.popup =!this.popup;

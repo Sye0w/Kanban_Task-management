@@ -92,7 +92,7 @@
         color: $main-purple;
       }
 
-      @include input-style-mixin($font, $blackrussian,);
+      @include input-style-mixin($font, $blackrussian,$background-color:$charade);
 
       button{
         font-family: $font !important;

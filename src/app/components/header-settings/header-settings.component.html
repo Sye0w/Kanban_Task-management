@@ -6,7 +6,7 @@
   </div>
 
   @if(popup){
-    <ul class="settings-div" >
+    <ul class="settings-div"  [ngClass]="{'dark':theme}">
      <li class="li-1" (click)="toggleEditModal()">Edit Board</li>
      <li class="li-2"(click)="toggleDeleteBoard()">Delete board</li>
     </ul>

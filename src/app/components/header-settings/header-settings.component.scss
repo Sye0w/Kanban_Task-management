@@ -38,6 +38,11 @@
   position: absolute;
   top: 6rem;
   right: 1.75rem;
+  transition: background-color .3s ease;
+
+  &.dark{
+    background-color: $charade;
+  }
 
   list-style: none;
   font-weight:500;
