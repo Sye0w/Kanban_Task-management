@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
+import { IBoard, Task } from '../../store/kanban/kanban.model';
 
 @Component({
   selector: 'app-columns',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DragDropModule],
   templateUrl: './columns.component.html',
   styleUrl: './columns.component.scss'
 })
@@ -33,5 +35,33 @@ export class ColumnsComponent {
 
   private randomColors(): string{
     return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+  }
+
+  drop(event: CdkDragDrop<Task[]>, board: IBoard) {
+    if (event.previousContainer === event.container) {
+      // Reordering within the same column
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.kanbanFacade.reorderTasks(board.id, event.container.id,
+        event.previousIndex, event.currentIndex);
+    } else {
+      // Moving between columns
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const task = event.container.data[event.currentIndex];
+      this.kanbanFacade.moveTask(board.id, task,
+        event.previousContainer.id, event.container.id, event.currentIndex);
+    }
+  }
+
+  trackByColumnName(index: number, column: { name: string }): string {
+    return column.name;
+  }
+
+  trackByTaskTitle(index: number, task: { title: string }): string {
+    return task.title;
   }
 }

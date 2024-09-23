@@ -34,7 +34,47 @@ export const kanbanReducer = createReducer(
   ),
   on(KanbanActions.deleteBoard, (state, { boardId }) =>
     adapter.removeOne(boardId, state)
-  )
+  ),
+  on(KanbanActions.moveTask,
+    (state, { boardId, task, sourceColumn, targetColumn, newIndex }) => {
+    const board = state.entities[boardId];
+    if (!board) return state;
+
+    const updatedColumns = board.columns.map(column => {
+      if (column.name === sourceColumn) {
+        return { ...column, tasks: column.tasks.filter(t => t.title !== task.title) };
+      }
+      if (column.name === targetColumn) {
+        const newTasks = [...column.tasks];
+        newTasks.splice(newIndex, 0, { ...task, status: targetColumn });
+        return { ...column, tasks: newTasks };
+      }
+      return column;
+    });
+
+    return adapter.updateOne({
+      id: boardId,
+      changes: { columns: updatedColumns }
+    }, state);
+  }),
+  on(KanbanActions.reorderTasks, (state, { boardId, column, taskIds }) => {
+    const board = state.entities[boardId];
+    if (!board) return state;
+
+    const updatedColumns = board.columns.map(col => {
+      if (col.name === column) {
+        const reorderedTasks = taskIds.map(id => col.tasks.find(task => task.title === id)!);
+        return { ...col, tasks: reorderedTasks };
+      }
+      return col;
+    });
+
+    return adapter.updateOne({
+      id: boardId,
+      changes: { columns: updatedColumns }
+    }, state);
+  })
+
 );
 
 export const {
