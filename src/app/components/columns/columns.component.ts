@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { IBoard, Task } from '../../store/kanban/kanban.model';
 import { ThemeService } from '../../services/theme/theme.service';
-
+import anime from 'animejs/lib/anime.es.js';
 @Component({
   selector: 'app-columns',
   standalone: true,
@@ -19,6 +19,8 @@ export class ColumnsComponent {
   constructor(private kanbanFacade: KanbanFacadeService,
     private themeService: ThemeService,
   ) {}
+
+
 
   private columnColors: Record<string, string> = {}
 

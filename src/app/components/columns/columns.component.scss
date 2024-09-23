@@ -17,7 +17,7 @@
 
 
   .column-list {
-    min-width: 17.5rem;
+    width: 17.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -42,6 +42,7 @@
 
     .tasks {
       min-height: 5.5rem;
+      list-style-type: none !important;
 
       &:empty {
         border: 2px dashed $regent-gray;
@@ -68,6 +69,8 @@
         margin-bottom: 1rem;
         cursor: move;
         transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+
+
 
         &.dark{
           background-color: $charade;
