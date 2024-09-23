@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ModalService } from '../../../services/modal/modal.service';
 import { KanbanFacadeService } from '../../../services/kanban-facade/kanban-facade.service';
 import { IBoard } from '../../../store/kanban/kanban.model';
+import { ThemeService } from '../../../services/theme/theme.service';
 
 @Component({
   selector: 'app-create-board',
@@ -16,20 +17,23 @@ import { IBoard } from '../../../store/kanban/kanban.model';
 
 export class CreateBoardComponent implements OnInit {
   modalActive: boolean = false;
+  theme: boolean = false;
   board: Omit<IBoard, 'id'> = {
     name: '',
     columns: [
-      
+
     ]
   }
 
   constructor(
     private modalService: ModalService,
-    private kanbanFacade: KanbanFacadeService
+    private kanbanFacade: KanbanFacadeService,
+    private themeService: ThemeService,
   ) {}
 
   ngOnInit() {
     this.modalService.createBoardActive$.subscribe(active => this.modalActive = active);
+    this.themeService.theme$.subscribe(theme => this.theme = theme);
   }
 
   addColumn() {
@@ -51,6 +55,7 @@ export class CreateBoardComponent implements OnInit {
 
   active() {
     return {
+      'dark': this.theme,
       'show': this.modalActive
     };
   }

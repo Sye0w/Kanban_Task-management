@@ -2,7 +2,7 @@
   <section class="modal" [ngClass]="active()" (click)="toggleModal()">
     <!-- create modal here -->
   </section>
-  <section class="createboard-modal" [ngClass]="active()" (click)="$event.stopPropagation()">
+  <section class="createboard-modal"  [ngClass]="active()" (click)="$event.stopPropagation()">
     <h4>Add New Board</h4>
     <form #boardForm="ngForm" (ngSubmit)="onSubmit()" class="board-form">
       <div>

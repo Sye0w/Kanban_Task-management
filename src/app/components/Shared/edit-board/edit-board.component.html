@@ -15,7 +15,7 @@
           @for(column of editedBoard.columns; track column; let i = $index) {
             <div class="column-item">
               <input type="text" [ngModel]="column.name" (ngModelChange)="updateColumnName(i, $event)" [name]="'column' + i" required placeholder="e.g. Todo">
-              <img src="../../../assets/assets/icon-cross.svg" alt="cancel-icon" (click)="removeColumn(i)">
+              <img src="../../../assets/images/icon-cross.svg" alt="cancel-icon" (click)="removeColumn(i)">
             </div>
           }
         </div>

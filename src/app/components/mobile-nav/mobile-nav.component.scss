@@ -29,6 +29,10 @@
     position: absolute;
     left: 3.25rem;
     top: 1.125rem;
+
+    &.dark{
+      background-color: $charade;
+    }
   }
 
 }

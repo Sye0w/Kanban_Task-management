@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { IBoard, Column } from '../../../store/kanban/kanban.model';
 import { FormsModule } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
+import { ThemeService } from '../../../services/theme/theme.service';
 
 @Component({
   selector: 'app-edit-board',
@@ -17,11 +18,13 @@ export class EditBoardComponent implements OnInit, OnDestroy {
   modalActive: boolean = false;
   selectedBoard$: Observable<IBoard | undefined>;
   editedBoard: IBoard | undefined;
+  theme: boolean = false;
   private subscription: Subscription = new Subscription();
 
   constructor(
     private modalService: ModalService,
-    private kanbanFacade: KanbanFacadeService
+    private kanbanFacade: KanbanFacadeService,
+    private themeService : ThemeService
   ) {
     this.selectedBoard$ = this.kanbanFacade.selectedBoardId$;
   }
@@ -34,10 +37,12 @@ export class EditBoardComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.selectedBoard$.subscribe(board => {
         if (board) {
-          this.editedBoard = JSON.parse(JSON.stringify(board)); // Create a deep copy
+          this.editedBoard = JSON.parse(JSON.stringify(board));
         }
       })
     );
+
+    this.themeService.theme$.subscribe(theme => this.theme = theme);
   }
 
   ngOnDestroy() {
@@ -82,6 +87,7 @@ export class EditBoardComponent implements OnInit, OnDestroy {
 
   active() {
     return {
+      'dark': this.theme,
       'show': this.modalActive
     };
   }

@@ -35,6 +35,10 @@
     top: 20%;
     z-index: 3;
 
+    &.dark{
+      background-color: $charade;
+    }
+
 
     .board-form{
       width: 100%;
@@ -88,7 +92,7 @@
         color: $main-purple;
       }
 
-      @include input-style-mixin($font, $blackrussian);
+      @include input-style-mixin($font, $blackrussian,);
 
       button{
         font-family: $font !important;
@@ -125,6 +129,10 @@
     justify-content: start;
     padding-inline: 2rem;
     padding-top: 2rem;
+
+    &.dark{
+      background-color: $charade;
+    }
 
     border-radius: .375rem;
 

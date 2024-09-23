@@ -4,6 +4,7 @@ import { ModalService } from '../../../services/modal/modal.service';
 import { CommonModule } from '@angular/common';
 import { KanbanFacadeService } from '../../../services/kanban-facade/kanban-facade.service';
 import { Subscription } from 'rxjs';
+import { ThemeService } from '../../../services/theme/theme.service';
 
 @Component({
   selector: 'app-delete-board',
@@ -16,16 +17,19 @@ export class DeleteBoardComponent implements OnInit, OnDestroy {
   modalActive: boolean = false;
   board: IBoard | undefined;
   private subscriptions: Subscription[] = [];
+  theme: boolean = false;
 
   constructor(
     private modalService: ModalService,
-    private kanbanFacade: KanbanFacadeService
+    private kanbanFacade: KanbanFacadeService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit() {
     this.subscriptions.push(
       this.modalService.deleteBoardActive$.subscribe(active => this.modalActive = active),
-      this.kanbanFacade.selectedBoardId$.subscribe(board => this.board = board)
+      this.kanbanFacade.selectedBoardId$.subscribe(board => this.board = board),
+      this.themeService.theme$.subscribe(theme => this.theme = theme)
     );
   }
 

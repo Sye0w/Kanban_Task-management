@@ -2,7 +2,7 @@
   <section class="modal"  (click)="toggleDeleteBoard()">
     <!-- Modal backdrop -->
   </section>
-  <section id="delete-modal"   (click)="$event.stopPropagation()">
+  <section id="delete-modal" [ngClass]="{'dark': theme}"   (click)="$event.stopPropagation()">
     <h4>Delete Board</h4>
     <p>
       Are you sure , you want to delete the '{{ boardName }}' board?
