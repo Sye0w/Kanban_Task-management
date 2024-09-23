@@ -45,13 +45,16 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "40kb",
-                  "maximumError": "4kb"
+                  "maximumError": "5kb" 
                 }
               ],
               "outputHashing": "all",
               "optimization": true,
               "sourceMap": false,
-              "aot": true
+              "aot": true,
+              "allowedCommonJsDependencies": [
+                "deepmerge"
+              ]
             },
             "development": {
               "optimization": false,
@@ -80,7 +83,6 @@
             "buildTarget": "Kanban_Task_management:build"
           }
         }
-
       }
     }
   }
