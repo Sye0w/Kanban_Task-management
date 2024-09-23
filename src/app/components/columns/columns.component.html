@@ -1,16 +1,30 @@
 <div class="columns">
   @if(selectedBoard$ | async; as board ){
-    @for (column of board.columns; track column.name) {
-      <ul>
+    @for (column of board.columns; track column.name; let columnIndex = $index) {
+      <ul
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        (cdkDropListDropped)="drop($event, board)"
+        [id]="column.name"
+        [cdkDropListConnectedTo]="getConnectedLists(board)"
+        class="column-list"
+      >
         <div class="column-header">
           <div class="column-icon" [ngStyle]="{'background-color': getColumnColors(column.name)}"></div>
           <h5>{{ column.name }} ({{ column.tasks.length }})</h5>
         </div>
         <ul class="tasks">
-          @for (task of column.tasks; track task.title) {
-            <li>
-              <h4>{{ task.title }}</h4>
-              <p>{{ task.subtasks.length }} Subtasks</p>
+          @for (task of column.tasks; track task.title; let taskIndex = $index) {
+            <li
+              cdkDrag
+              [cdkDragData]="task"
+              class="task-item"
+            >
+              <div class="task-content">
+                <h4>{{ task.title }}</h4>
+                <p>{{ task.subtasks.length }} Subtasks</p>
+              </div>
+              <div *cdkDragPlaceholder class="task-placeholder"></div>
             </li>
           }
         </ul>
@@ -21,4 +35,3 @@
     </div>
   }
 </div>
-
