@@ -4,12 +4,12 @@
     <h3 id="base-h3">
       @if (board$ | async; as board) {
         {{ board.name }}
-      }
+      }  @else{ Select a board }
     </h3>
     <div id="mobile" (click)="toggleNav()">
       @if (board$ | async; as board) {
         {{ board.name }}
-      }
+      } @else{ Select a board }
       @if ((mobileNavActive$ | async) === true) {
         <img src="../../../assets/assets/icon-chevron-up.svg" alt="">
       } @else {
