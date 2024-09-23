@@ -13,6 +13,16 @@
   overflow: hidden;
 }
 
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  &.dark{
+    background-color: $blackrussian;
+    color: $white;
+  }
+}
+
+
 .sidenav-toggle {
   position: fixed;
   @include flex-center;

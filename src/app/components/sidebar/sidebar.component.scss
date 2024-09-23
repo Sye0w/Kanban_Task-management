@@ -20,8 +20,11 @@ aside {
   flex-direction: column;
   color: $regent-gray;
   padding-top: .875rem;
+  transition: background-color 0.3s ease;
 
-  
+  &.dark{
+    background-color: $charade;
+  }
 
 
 
@@ -29,6 +32,10 @@ aside {
 
 mat-drawer {
   border-right: 1px solid $linkwater;
+
+  &.dark{
+    border-color: $gunpowder;
+  }
 }
 
 mat-drawer-content {

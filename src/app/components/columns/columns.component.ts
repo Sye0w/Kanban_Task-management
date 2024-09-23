@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { IBoard, Task } from '../../store/kanban/kanban.model';
+import { ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-columns',
@@ -13,8 +14,11 @@ import { IBoard, Task } from '../../store/kanban/kanban.model';
 })
 export class ColumnsComponent {
   @Input() selectedBoard$ = this.kanbanFacade.selectedBoardId$;
+  theme: boolean = false;
 
-  constructor(private kanbanFacade: KanbanFacadeService) {}
+  constructor(private kanbanFacade: KanbanFacadeService,
+    private themeService: ThemeService,
+  ) {}
 
   private columnColors: Record<string, string> = {}
 
@@ -22,6 +26,10 @@ export class ColumnsComponent {
     'Todo': '#49C4E5',
     'Doing': '#8471F2',
     'Done': '#67E2AE'
+  }
+
+  ngOnInit(){
+    this.themeService.theme$.subscribe( theme => this.theme = theme)
   }
 
   getColumnColors(name: string): string {

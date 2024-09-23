@@ -1,14 +1,23 @@
-import {AfterViewInit, Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit } from '@angular/core';
 
 import anime from 'animejs/lib/anime.es.js';
+import { ThemeService } from '../../services/theme/theme.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-logo',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './logo.component.html',
   styleUrl: './logo.component.scss'
 })
-export class LogoComponent implements AfterViewInit{
+export class LogoComponent implements AfterViewInit, OnInit{
+  theme: boolean = false;
+  constructor( private themeService: ThemeService){}
+
+  ngOnInit(){
+    this.themeService.theme$.subscribe( theme => this.theme = theme)
+  }
+
 
   ngAfterViewInit() {
     anime({

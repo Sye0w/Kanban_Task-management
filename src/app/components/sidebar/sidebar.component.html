@@ -1,6 +1,6 @@
 <mat-drawer-container>
-  <mat-drawer [opened]="opened" mode="side">
-    <aside>
+  <mat-drawer [opened]="opened" mode="side" [ngClass]="{'dark': theme}">
+    <aside [ngClass]="{'dark': theme}">
       <app-sidebar-list/>
       <app-sidebar-settings/>
     </aside>

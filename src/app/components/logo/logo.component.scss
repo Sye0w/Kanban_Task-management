@@ -11,6 +11,12 @@
   gap: .9844rem;
   border-right: 1px solid $linkwater;
   padding-right: 1.125rem;
+  transition: border 0.3s ease, color 0.3s ease;
+
+  &.dark{
+    border-color: $gunpowder;
+    color: $white;
+  }
 
   .logo-svg{
     width: auto;

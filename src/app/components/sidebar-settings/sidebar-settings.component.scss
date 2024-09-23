@@ -18,6 +18,7 @@
       gap: 1.375rem;
       justify-content: center;
       padding-block: .9375rem;
+      transition: background-color 0.3s ease;
 
       .toggle-div {
         width: 2.5rem;
@@ -41,6 +42,10 @@
             transform: translateX(1.125rem);
           }
         }
+      }
+
+      &.dark{
+        background-color: $charadedp;
       }
     }
 

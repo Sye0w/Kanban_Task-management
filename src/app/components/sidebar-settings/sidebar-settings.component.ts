@@ -2,16 +2,17 @@ import { Component } from '@angular/core';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { ModalService } from '../../services/modal/modal.service';
 import { ThemeService } from '../../services/theme/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar-settings',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sidebar-settings.component.html',
   styleUrl: './sidebar-settings.component.scss'
 })
 export class SidebarSettingsComponent {
-  isDarkMode: boolean = false;
+  theme: boolean = false;
 
   constructor(
     private modalService: ModalService,
@@ -20,7 +21,7 @@ export class SidebarSettingsComponent {
   ) {}
 
   ngOnInit(){
-    this.themeService.theme$.subscribe(theme => this.isDarkMode = theme);
+    this.themeService.theme$.subscribe(theme => this.theme = theme);
   }
 
   toggleSidenav() {

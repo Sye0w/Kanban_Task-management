@@ -15,9 +15,10 @@
               <div class="column-icon" [ngStyle]="{'background-color': getColumnColors(column.name)}"></div>
               <h5>{{ column.name }} ({{ column.tasks.length }})</h5>
             </div>
-            <ul class="tasks">
+            <ul class="tasks" >
               @for (task of column.tasks; track task.title; let taskIndex = $index) {
                 <li
+                 [ngClass]="{'dark': theme}"
                   cdkDrag
                   [cdkDragData]="task"
                   class="task-item"
@@ -32,7 +33,7 @@
             </ul>
           </ul>
         }
-        <div class="add-columns">
+        <div class="add-columns" [ngClass]="{'dark': theme}">
           <p>+ New Column</p>
         </div>
       </div>
@@ -44,5 +45,5 @@
         </button>
       </div>
     }
-  } 
+  }
 </div>

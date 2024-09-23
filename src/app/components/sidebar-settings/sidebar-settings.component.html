@@ -1,9 +1,9 @@
 <section class="sidebar-settings">
   <div>
-    <div class="theme">
+    <div class="theme" [ngClass]="{'dark': theme}">
       <img src="../../../assets/images/icon-light-theme.svg" alt="light-icon">
       <div class="toggle-div" (click)="toggleTheme()">
-        <div class="toggle" [class.active]="isDarkMode"></div>
+        <div class="toggle" [class.active]="theme"></div>
       </div>
       <img src="../../../assets/images/icon-dark-theme.svg" alt="dark-icon">
     </div>

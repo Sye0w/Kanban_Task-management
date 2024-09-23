@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IBoard } from '../../store/kanban/kanban.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 import { CommonModule } from '@angular/common';
 import { ColumnsComponent } from "../../components/columns/columns.component";
+import { ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-dashboard-view',
@@ -15,8 +14,11 @@ import { ColumnsComponent } from "../../components/columns/columns.component";
 
 export class DashboardViewComponent {
   @Input() selectedBoard$ = this.kanbanFacade.selectedBoardId$;
+  theme: boolean = false;
 
-  constructor(private kanbanFacade: KanbanFacadeService) {}
+  constructor(private kanbanFacade: KanbanFacadeService,
+    private themeService: ThemeService) {}
+
 
 
 }
