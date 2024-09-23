@@ -1,10 +1,11 @@
-// add-task.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { KanbanFacadeService } from '../../services/kanban-facade/kanban-facade.service';
 
 interface Subtask {
   title: string;
@@ -23,13 +24,28 @@ interface Subtask {
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit, OnDestroy {
   visible: boolean = false;
   title: string = '';
   description: string = '';
   subtasks: Subtask[] = [{ title: '' }, { title: '' }];
   status: string = 'Todo';
-  
+  isButtonDisabled: boolean = true;
+  private subscription!: Subscription;
+
+  constructor(private kanbanFacade: KanbanFacadeService) {}
+
+  ngOnInit() {
+    this.subscription = this.kanbanFacade.selectedBoardId$.subscribe(board => {
+      this.isButtonDisabled = !board || board.columns.length === 0;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   toggleForm() {
     this.visible = !this.visible;

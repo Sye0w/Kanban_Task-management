@@ -1,6 +1,5 @@
-<!-- add-task.component.html -->
-<button id="add-btn"  (click)="toggleForm()">
-  + <span>Add New task</span>
+<button id="add-btn" [disabled]="isButtonDisabled" (click)="toggleForm()">
+  + <span>Add New Task</span>
 </button>
 
 @if (visible) {

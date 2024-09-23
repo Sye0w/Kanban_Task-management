@@ -19,14 +19,7 @@ export class CreateBoardComponent implements OnInit {
   board: Omit<IBoard, 'id'> = {
     name: '',
     columns: [
-      {
-        name: 'Todo',
-        tasks: [],
-      },
-      {
-        name: 'Doing',
-        tasks: [],
-      }
+      
     ]
   }
 
