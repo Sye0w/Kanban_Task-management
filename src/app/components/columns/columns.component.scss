@@ -129,6 +129,10 @@
   #add-col{
     @include button-style();
     border-style: none !important;
+
+    &:hover{
+      background-color: #D9D7F0;
+    }
   }
 
 

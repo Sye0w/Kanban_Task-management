@@ -30,6 +30,7 @@
       }
     }
 
+
     li{
       padding-left: 4.5rem;
       list-style-type: none;
@@ -39,10 +40,25 @@
       align-items: center;
       gap: 1rem;
       cursor: pointer;
+      transition: color 0.3s ease, background-color 0.3s ease;
 
-      img{
-        width: 1rem;
-        height: 1rem;
+      svg {
+        path {
+          transition: fill 0.3s ease;
+        }
+      }
+
+      &:hover:not(.selected-board) {
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+        color: $main-purple;
+        background-color: rgba($main-purple, 0.1);
+
+        svg {
+          path {
+            fill: $main-purple;
+          }
+        }
       }
     }
 
