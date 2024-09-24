@@ -7,7 +7,7 @@
   width: 100%;
   overflow-x: auto;
   padding-bottom: 1rem;
-  // min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
 
   .columns-row{
     display: flex;
@@ -17,7 +17,7 @@
 
 
   .column-list {
-    width: 17.5rem;
+    min-width: 17.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -187,6 +187,13 @@
     .column-list {
       width: 100%;
       max-width: 90vw;
+    }
+  }
+
+  #no-column-viz {
+    p {
+      font-size: .9375rem;
+
     }
   }
 }

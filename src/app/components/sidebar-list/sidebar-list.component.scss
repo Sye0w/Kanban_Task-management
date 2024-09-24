@@ -93,6 +93,8 @@
   }
 
   .boardsname-list{
+    max-height:  13rem;
+    overflow-y: scroll !important;
     .selected-board{
       width: 15rem !important;
     }

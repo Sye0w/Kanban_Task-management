@@ -1,10 +1,12 @@
-@if (selectedBoard$ | async; as board) {
-  <section>
-    <app-columns/>
-  </section>
-} @else {
-  <div>
-    <p>No board selected yet.Choose a board to get started...</p>
-    <img src="../../../assets/images/choose-board.svg" alt="">
-  </div>
-}
+<div class="board">
+  @if (selectedBoard$ | async; as board) {
+    <section>
+      <app-columns/>
+    </section>
+  } @else {
+    <div class="no-selected">
+      <p>No board selected yet.Choose a board to get started...</p>
+      <img src="../../../assets/images/choose-board.svg" alt="">
+    </div>
+  }
+</div>

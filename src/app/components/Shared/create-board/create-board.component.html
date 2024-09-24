@@ -4,7 +4,7 @@
   </section>
   <section class="createboard-modal"  [ngClass]="active()" (click)="$event.stopPropagation()">
     <h4>Add New Board</h4>
-    <form #boardForm="ngForm" (ngSubmit)="onSubmit()" class="board-form">
+    <form #boardForm="ngForm" (ngSubmit)="onSubmit()" class="board-form" [ngClass]="active()" >
       <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" [(ngModel)]="board.name" required #name="ngModel" placeholder="e.g. Web Design">

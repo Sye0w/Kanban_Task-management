@@ -45,6 +45,10 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem !important;
+      &.dark{
+        background-color: $charade;
+      }
+
       div{
         display: flex;
         flex-direction: column;
